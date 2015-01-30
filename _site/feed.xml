@@ -6,8 +6,8 @@
 </description>
     <link>http://yourdomain.com/</link>
     <atom:link href="http://yourdomain.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 29 Jan 2015 20:48:45 -0500</pubDate>
-    <lastBuildDate>Thu, 29 Jan 2015 20:48:45 -0500</lastBuildDate>
+    <pubDate>Thu, 29 Jan 2015 20:51:17 -0500</pubDate>
+    <lastBuildDate>Thu, 29 Jan 2015 20:51:17 -0500</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
     
       <item>
@@ -35,7 +35,7 @@
 
 &lt;p&gt;Things got off fairly well with Xamarin. Although most developers probably run it as a Visual Studio plugin, I actually use the Xamarin Studio IDE on my Mac and found it quite nice, in some ways even better than Microsoft Visual Studio. Then again, depending on your perspective, that’s not necessarily a tough target to hit.&lt;/p&gt;
 
-&lt;p&gt;It took me a while to get the hang of the iOS event model and it’s notion of MVC, which is more like ASP.NET webforms than MVC, if you ask me, but &lt;/p&gt;
+&lt;p&gt;It took me a while to get the hang of the iOS event model and it’s notion of MVC, which is more like ASP.NET webforms than MVC, if you ask me, but before too long, I was able to create an app that ran in the simulator and I could basically understand what was going on.&lt;/p&gt;
 
 </description>
         <pubDate>Thu, 29 Jan 2015 14:33:59 -0500</pubDate>
