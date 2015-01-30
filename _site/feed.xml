@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Advendtures in Software Development</title>
+    <description>Adventures in Software Development is my blog where I write about things I am learning or commentary I want to share from all aspects of the art and science of software development.
+</description>
+    <link>http://yourdomain.com/</link>
+    <atom:link href="http://yourdomain.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Thu, 29 Jan 2015 20:27:51 -0500</pubDate>
+    <lastBuildDate>Thu, 29 Jan 2015 20:27:51 -0500</lastBuildDate>
+    <generator>Jekyll v2.4.0</generator>
+    
+      <item>
+        <title>Xamarin, Dropbox Datastore and Me</title>
+        <description>&lt;p&gt;I had an idea for an app but then again, who hasn’t?  As a Mac and iPhone owner of several years my target platform was already decided. My app needs the ability to sync structured information between devices and desktop computers, including eventually Windwows, Android, etc. &lt;/p&gt;
+
+&lt;p&gt;In the past, I have “experimented” with XCode and Objective C. Frankly, it’s a match made in heaven: a hideous language married to a terrible IDE. (Have I offended you yet).  When Apple launched Swift in the summer of 2014, I “heard about it” fairly quickly, but did not look into it at all. A month or two ago I dove into it more deeply and I was &lt;em&gt;really&lt;/em&gt; impressed with the language, the lack of any sort if IO support into the language was a little disappointing. &lt;/p&gt;
+
+&lt;p&gt;I’ll probably revisit Swift sometime down the road, but I need to get moving on my app and so I made a decision, but my decision has lead me to an obstacle that I’ve not yet been able to overcome. &lt;/p&gt;
+
+&lt;p&gt;I decided to use the Xamarin development tools because:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;I already know C# from my job&lt;/li&gt;
+  &lt;li&gt;Xamarin allows me to target iOS, Mac OS X and Android&lt;/li&gt;
+  &lt;li&gt;I can take the same C# and with little modification create a Windows version of my application.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The next big decision was synchronizing the data between devices and for this I chose Dropbox because:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;they’re a leader in this space&lt;/li&gt;
+  &lt;li&gt;the price was right&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Things got off fairly well with Xamarin. Although most developers probably run it as a Visual Studio plugin, I actually use the Xamarin Studio IDE on my Mac and found it quite nice, in some ways even better than Microsoft Visual Studio. Then again, depending on your perspective, that’s not necessarily a tough target to hit.&lt;/p&gt;
+
+&lt;p&gt;It took me a while to get the hang of the iOS event model and it’s notion of MVC, which is more like ASP.NET webforms than MVC, if you ask me, but &lt;/p&gt;
+
+</description>
+        <pubDate>Thu, 29 Jan 2015 14:33:59 -0500</pubDate>
+        <link>http://yourdomain.com/ios/c%23/2015/01/29/welcome-to-jekyll.html</link>
+        <guid isPermaLink="true">http://yourdomain.com/ios/c%23/2015/01/29/welcome-to-jekyll.html</guid>
+        
+        
+        <category>ios</category>
+        
+        <category>c#</category>
+        
+      </item>
+    
+  </channel>
+</rss>
