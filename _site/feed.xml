@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Advendtures in Software Development</title>
+    <title>Adventures in Software Development</title>
     <description>Adventures in Software Development is my blog where I write about things I am learning or commentary I want to share from all aspects of the art and science of software development.
 </description>
     <link>http://yourdomain.com/</link>
     <atom:link href="http://yourdomain.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 29 Jan 2015 21:03:17 -0500</pubDate>
-    <lastBuildDate>Thu, 29 Jan 2015 21:03:17 -0500</lastBuildDate>
+    <pubDate>Fri, 06 Feb 2015 16:35:14 -0500</pubDate>
+    <lastBuildDate>Fri, 06 Feb 2015 16:35:14 -0500</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
     
       <item>
-        <title>Xamarin, Dropbox Datastore and Me</title>
-        <description>&lt;p&gt;I had an idea for an app but then again, who hasn’t?  As a Mac and iPhone owner of several years my target platform was already decided. My app needs the ability to sync structured information between devices and desktop computers, including eventually Windwows, Android, etc. &lt;/p&gt;
+        <title>Working with the Dropbox Datastore API in iOS using Xamarin</title>
+        <description>&lt;h1 id=&quot;the-background&quot;&gt;The Background&lt;/h1&gt;
+
+&lt;p&gt;I had an idea for an app but then again, who hasn’t?  As a Mac and iPhone owner of several years my target platform was already decided. My app needs the ability to sync structured information between devices and desktop computers, including eventually Windwows, Android, etc. &lt;/p&gt;
 
 &lt;p&gt;In the past, I have “experimented” with XCode and Objective C. Frankly, it’s a match made in heaven: a hideous language married to a terrible IDE. (Have I offended you yet).  When Apple launched Swift in the summer of 2014, I “heard about it” fairly quickly, but did not look into it at all. A month or two ago I dove into it more deeply and I was &lt;em&gt;really&lt;/em&gt; impressed with the language, the lack of any sort if IO support into the language was a little disappointing. &lt;/p&gt;
 
@@ -35,12 +37,82 @@
 
 &lt;p&gt;Things got off fairly well with Xamarin. Although most developers probably run it as a Visual Studio plugin, I actually use the Xamarin Studio IDE on my Mac and found it quite nice, in some ways even better than Microsoft Visual Studio. Then again, depending on your perspective, that’s not necessarily a tough target to hit.&lt;/p&gt;
 
-&lt;p&gt;It took me a while to get the hang of the iOS event model and it’s notion of MVC, which is more like ASP.NET webforms than MVC, if you ask me, but before too long, I was able to create an app that ran in the simulator and I could basically understand what was going on.&lt;/p&gt;
+&lt;h1 id=&quot;getting-started&quot;&gt;Getting Started&lt;/h1&gt;
+
+&lt;p&gt;For an app to use the Dropbox APIs, several things have to happen.  I’ll list them in a second, but be warned that this is &lt;em&gt;my understanding&lt;/em&gt;, which is not necessarily 100% correct, because if it were, I’d probably be writing my app and not this blog post.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Obtain a Dropbox developer account at &lt;a href=&quot;https://www.dropbox.com/developers&quot;&gt;https://www.dropbox.com/developers&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;Register your app with Dropbox on the “App Console” page.&lt;/li&gt;
+  &lt;li&gt;Write the code in your app so that at runtime, it prompts the user to supply their Dropbox credentials order for your app to access their data. Included in this code you write is the passing of the “App key” and “App secret” assigned by Dropbox to your application.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Let’s take a closer look at items 2 and 3 above. Note: For demonstration purposes, I have created a sample app with the same name as my Twitter handle: &lt;em&gt;motownjoe&lt;/em&gt;.&lt;/p&gt;
+
+&lt;div style=&quot;text-align:center; border-style:solid; border-color:gray;margin-top:25px; margin-bottom:25px&quot;&gt;
+&lt;img src=&quot;/images/appconsole.png&quot; /&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Clicking on the “Create app” button leads to this page.  If you’re doing moble app development with Dropbox, you’ll almost certainly want to choose “Dropbox API app” Once you click on “Dropbox API app” you’re presented with another choice:  “Files and Datastores” or “Datastores only”.  If you’re not quite sure what to choose at this point, choose “Files and datastores”.&lt;/p&gt;
+
+&lt;div style=&quot;text-align:center; border-style:solid; border-color:gray;margin-top:25px; margin-bottom:25px&quot;&gt;
+&lt;img src=&quot;/images/create2.png&quot; /&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Finally you’ll arrive at the “details” page which of course contains details about your app:&lt;br /&gt;&lt;/p&gt;
+
+&lt;div style=&quot;text-align:center; border-style:solid; border-color:gray;margin-top:25px; margin-bottom:25px&quot;&gt;
+	&lt;img src=&quot;/images/details.png&quot; /&gt;
+&lt;/div&gt;
+
+&lt;p&gt;On this last page, notice the two items “App key” and “App secret”? These will come into play very soon.  Now that we have our Dropbox environment (mostly) setup, it’s time to fire up Xamarin. Let’s choose a “New Solution” and then under “iOS” » “Unified” » “iPhone”, choose “Single View Application”. &lt;/p&gt;
+
+&lt;div style=&quot;text-align:center; border-style:solid; border-color:gray;margin-top:25px; margin-bottom:25px&quot;&gt;
+	&lt;img src=&quot;/images/newsolution.png&quot; /&gt;
+&lt;/div&gt;
+
+&lt;p&gt;This is where things start getting a little sketchy for me, but let’s forge ahead, shall we? So Xamarin has generated for us a nice, blank project (below):&lt;/p&gt;
+
+&lt;div style=&quot;text-align:center; border-style:solid; border-color:gray;margin-top:25px; margin-bottom:25px&quot;&gt;
+	&lt;img src=&quot;/images/blankproj.png&quot; /&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Not knowing where to go or what to do next, I did what any developer in a pinch does, turn to the web. The problem I ran into is that the documentation from both Dropbox and Xamarin leave me feeling underwhelmed. The Dropbox examples are in Objective-C using XCode but that’s not the biggest problem.  The biggest problem, at least for me, is that the documentation feels like it’s targeted toward developers that don’t actually need the documentation.  I would much rather read documentation that is too basic, than too cryptic. I can skim ahead of stuff I know, but if it’s over my head to start with and then gets more difficult to follow, that doesn’t help me at all. I was really hoping to find a step by step tutorial that assumes nothing and shows everything. Alas, I may have to make it myself as I could not find one. &lt;/p&gt;
+
+&lt;p&gt;Still, let’s take a look and maybe going slow enough to write this blog post at the same time, perhaps it will now make sense. I first began by Googling “Xamarin dropbox datastore”&lt;/p&gt;
+
+&lt;div style=&quot;text-align:center; border-style:solid; border-color:gray;margin-top:25px; margin-bottom:25px&quot;&gt;
+	&lt;img src=&quot;/images/comp-store.png&quot; /&gt;
+&lt;/div&gt;
+
+&lt;p&gt;I learned that Xamarin has a component for Dropbox in their Component Store. By right-clicking on the “Component” entry in the solution explorer, I could choose “Get More Components”, which launched the Component Store.&lt;/p&gt;
+
+&lt;div style=&quot;text-align:center; border-style:solid; border-color:gray;margin-top:25px; margin-bottom:25px&quot;&gt;
+	&lt;img src=&quot;/images/dropboxcomponent.png&quot; /&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The webpage at &lt;a href=&quot;https://components.xamarin.com/view/dropboxsync&quot;&gt;https://components.xamarin.com/view/dropboxsync&lt;/a&gt; brings us to this example code and explanation:&lt;/p&gt;
+
+&lt;div style=&quot;text-align:center; border-style:solid; border-color:gray;margin-top:25px; margin-bottom:25px&quot;&gt;
+	&lt;img src=&quot;/images/code1.png&quot; /&gt;
+&lt;/div&gt;
+
+&lt;p&gt;…which I dutifully copy into my AppDelegate.cs file.&lt;/p&gt;
+
+&lt;p&gt;Next, the Dropbox website tells me that I need to add an entry to the info.plist file. Admittedly, I don’t know much about iOS programming, but it seems to me that info.plist is a file that holds configuration infomation, similar to the App.config or a web.config file in a Microsoft.NET proect.&lt;/p&gt;
+
+&lt;div style=&quot;text-align:center; border-style:solid; border-color:gray;margin-top:25px; margin-bottom:25px&quot;&gt;
+	&lt;img src=&quot;/images/plist.png&quot; /&gt;
+&lt;/div&gt;
+
+&lt;div style=&quot;text-align:center; border-style:solid; border-color:gray;margin-top:25px; margin-bottom:25px&quot;&gt;
+	&lt;img src=&quot;/images/KeyAndSecretInCode.png&quot; /&gt;
+&lt;/div&gt;
 
 </description>
         <pubDate>Thu, 29 Jan 2015 14:33:59 -0500</pubDate>
-        <link>http://yourdomain.com/ios/c%23/2015/01/29/welcome-to-jekyll.html</link>
-        <guid isPermaLink="true">http://yourdomain.com/ios/c%23/2015/01/29/welcome-to-jekyll.html</guid>
+        <link>http://yourdomain.com/ios/c%23/2015/01/29/xamarin-dropbox-and-me.html</link>
+        <guid isPermaLink="true">http://yourdomain.com/ios/c%23/2015/01/29/xamarin-dropbox-and-me.html</guid>
         
         
         <category>ios</category>

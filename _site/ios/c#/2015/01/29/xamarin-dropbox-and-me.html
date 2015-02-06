@@ -6,12 +6,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Xamarin, Dropbox Datastore and Me</title>
-  <meta name="description" content="I had an idea for an app but then again, who hasn’t?  As a Mac and iPhone owner of several years my target platform was already decided. My app needs the abi...">
+  <title>Working with the Dropbox Datastore API in iOS using Xamarin</title>
+  <meta name="description" content="The Background">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://yourdomain.com/ios/c%23/2015/01/29/welcome-to-jekyll.html">
-  <link rel="alternate" type="application/rss+xml" title="Advendtures in Software Development" href="http://yourdomain.com/feed.xml" />
+  <link rel="canonical" href="http://yourdomain.com/ios/c%23/2015/01/29/xamarin-dropbox-and-me.html">
+  <link rel="alternate" type="application/rss+xml" title="Adventures in Software Development" href="http://yourdomain.com/feed.xml" />
 </head>
 
 
@@ -21,7 +21,7 @@
 
   <div class="wrapper">
 
-    <a class="site-title" href="/">Advendtures in Software Development</a>
+    <a class="site-title" href="/">Adventures in Software Development</a>
 
     <nav class="site-nav">
       <a href="#" class="menu-icon">
@@ -57,12 +57,14 @@
         <div class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Xamarin, Dropbox Datastore and Me</h1>
+    <h1 class="post-title">Working with the Dropbox Datastore API in iOS using Xamarin</h1>
     <p class="post-meta">Jan 29, 2015</p>
   </header>
 
   <article class="post-content">
-    <p>I had an idea for an app but then again, who hasn’t?  As a Mac and iPhone owner of several years my target platform was already decided. My app needs the ability to sync structured information between devices and desktop computers, including eventually Windwows, Android, etc. </p>
+    <h1 id="the-background">The Background</h1>
+
+<p>I had an idea for an app but then again, who hasn’t?  As a Mac and iPhone owner of several years my target platform was already decided. My app needs the ability to sync structured information between devices and desktop computers, including eventually Windwows, Android, etc. </p>
 
 <p>In the past, I have “experimented” with XCode and Objective C. Frankly, it’s a match made in heaven: a hideous language married to a terrible IDE. (Have I offended you yet).  When Apple launched Swift in the summer of 2014, I “heard about it” fairly quickly, but did not look into it at all. A month or two ago I dove into it more deeply and I was <em>really</em> impressed with the language, the lack of any sort if IO support into the language was a little disappointing. </p>
 
@@ -85,7 +87,77 @@
 
 <p>Things got off fairly well with Xamarin. Although most developers probably run it as a Visual Studio plugin, I actually use the Xamarin Studio IDE on my Mac and found it quite nice, in some ways even better than Microsoft Visual Studio. Then again, depending on your perspective, that’s not necessarily a tough target to hit.</p>
 
-<p>It took me a while to get the hang of the iOS event model and it’s notion of MVC, which is more like ASP.NET webforms than MVC, if you ask me, but before too long, I was able to create an app that ran in the simulator and I could basically understand what was going on.</p>
+<h1 id="getting-started">Getting Started</h1>
+
+<p>For an app to use the Dropbox APIs, several things have to happen.  I’ll list them in a second, but be warned that this is <em>my understanding</em>, which is not necessarily 100% correct, because if it were, I’d probably be writing my app and not this blog post.</p>
+
+<ol>
+  <li>Obtain a Dropbox developer account at <a href="https://www.dropbox.com/developers">https://www.dropbox.com/developers</a>.</li>
+  <li>Register your app with Dropbox on the “App Console” page.</li>
+  <li>Write the code in your app so that at runtime, it prompts the user to supply their Dropbox credentials order for your app to access their data. Included in this code you write is the passing of the “App key” and “App secret” assigned by Dropbox to your application.</li>
+</ol>
+
+<p>Let’s take a closer look at items 2 and 3 above. Note: For demonstration purposes, I have created a sample app with the same name as my Twitter handle: <em>motownjoe</em>.</p>
+
+<div style="text-align:center; border-style:solid; border-color:gray;margin-top:25px; margin-bottom:25px">
+<img src="/images/appconsole.png" />
+</div>
+
+<p>Clicking on the “Create app” button leads to this page.  If you’re doing moble app development with Dropbox, you’ll almost certainly want to choose “Dropbox API app” Once you click on “Dropbox API app” you’re presented with another choice:  “Files and Datastores” or “Datastores only”.  If you’re not quite sure what to choose at this point, choose “Files and datastores”.</p>
+
+<div style="text-align:center; border-style:solid; border-color:gray;margin-top:25px; margin-bottom:25px">
+<img src="/images/create2.png" />
+</div>
+
+<p>Finally you’ll arrive at the “details” page which of course contains details about your app:<br /></p>
+
+<div style="text-align:center; border-style:solid; border-color:gray;margin-top:25px; margin-bottom:25px">
+	<img src="/images/details.png" />
+</div>
+
+<p>On this last page, notice the two items “App key” and “App secret”? These will come into play very soon.  Now that we have our Dropbox environment (mostly) setup, it’s time to fire up Xamarin. Let’s choose a “New Solution” and then under “iOS” » “Unified” » “iPhone”, choose “Single View Application”. </p>
+
+<div style="text-align:center; border-style:solid; border-color:gray;margin-top:25px; margin-bottom:25px">
+	<img src="/images/newsolution.png" />
+</div>
+
+<p>This is where things start getting a little sketchy for me, but let’s forge ahead, shall we? So Xamarin has generated for us a nice, blank project (below):</p>
+
+<div style="text-align:center; border-style:solid; border-color:gray;margin-top:25px; margin-bottom:25px">
+	<img src="/images/blankproj.png" />
+</div>
+
+<p>Not knowing where to go or what to do next, I did what any developer in a pinch does, turn to the web. The problem I ran into is that the documentation from both Dropbox and Xamarin leave me feeling underwhelmed. The Dropbox examples are in Objective-C using XCode but that’s not the biggest problem.  The biggest problem, at least for me, is that the documentation feels like it’s targeted toward developers that don’t actually need the documentation.  I would much rather read documentation that is too basic, than too cryptic. I can skim ahead of stuff I know, but if it’s over my head to start with and then gets more difficult to follow, that doesn’t help me at all. I was really hoping to find a step by step tutorial that assumes nothing and shows everything. Alas, I may have to make it myself as I could not find one. </p>
+
+<p>Still, let’s take a look and maybe going slow enough to write this blog post at the same time, perhaps it will now make sense. I first began by Googling “Xamarin dropbox datastore”</p>
+
+<div style="text-align:center; border-style:solid; border-color:gray;margin-top:25px; margin-bottom:25px">
+	<img src="/images/comp-store.png" />
+</div>
+
+<p>I learned that Xamarin has a component for Dropbox in their Component Store. By right-clicking on the “Component” entry in the solution explorer, I could choose “Get More Components”, which launched the Component Store.</p>
+
+<div style="text-align:center; border-style:solid; border-color:gray;margin-top:25px; margin-bottom:25px">
+	<img src="/images/dropboxcomponent.png" />
+</div>
+
+<p>The webpage at <a href="https://components.xamarin.com/view/dropboxsync">https://components.xamarin.com/view/dropboxsync</a> brings us to this example code and explanation:</p>
+
+<div style="text-align:center; border-style:solid; border-color:gray;margin-top:25px; margin-bottom:25px">
+	<img src="/images/code1.png" />
+</div>
+
+<p>…which I dutifully copy into my AppDelegate.cs file.</p>
+
+<p>Next, the Dropbox website tells me that I need to add an entry to the info.plist file. Admittedly, I don’t know much about iOS programming, but it seems to me that info.plist is a file that holds configuration infomation, similar to the App.config or a web.config file in a Microsoft.NET proect.</p>
+
+<div style="text-align:center; border-style:solid; border-color:gray;margin-top:25px; margin-bottom:25px">
+	<img src="/images/plist.png" />
+</div>
+
+<div style="text-align:center; border-style:solid; border-color:gray;margin-top:25px; margin-bottom:25px">
+	<img src="/images/KeyAndSecretInCode.png" />
+</div>
 
 
   </article>
@@ -114,12 +186,12 @@
 
   <div class="wrapper">
 
-    <h2 class="footer-heading">Advendtures in Software Development</h2>
+    <h2 class="footer-heading">Adventures in Software Development</h2>
 
     <div class="footer-col-wrapper">
       <div class="footer-col  footer-col-1">
         <ul class="contact-list">
-          <li>Advendtures in Software Development</li>
+          <li>Adventures in Software Development</li>
           <li><a href="mailto:joe.meirow@gmail.com">joe.meirow@gmail.com</a></li>
         </ul>
       </div>
