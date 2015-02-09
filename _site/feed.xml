@@ -6,13 +6,13 @@
 </description>
     <link>http://yourdomain.com/</link>
     <atom:link href="http://yourdomain.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 06 Feb 2015 16:35:14 -0500</pubDate>
-    <lastBuildDate>Fri, 06 Feb 2015 16:35:14 -0500</lastBuildDate>
+    <pubDate>Mon, 09 Feb 2015 13:34:20 -0500</pubDate>
+    <lastBuildDate>Mon, 09 Feb 2015 13:34:20 -0500</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
     
       <item>
         <title>Working with the Dropbox Datastore API in iOS using Xamarin</title>
-        <description>&lt;h1 id=&quot;the-background&quot;&gt;The Background&lt;/h1&gt;
+        <description>&lt;h1 id=&quot;the-background&quot;&gt;The Background…&lt;/h1&gt;
 
 &lt;p&gt;I had an idea for an app but then again, who hasn’t?  As a Mac and iPhone owner of several years my target platform was already decided. My app needs the ability to sync structured information between devices and desktop computers, including eventually Windwows, Android, etc. &lt;/p&gt;
 

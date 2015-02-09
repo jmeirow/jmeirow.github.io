@@ -6,7 +6,7 @@ categories: ios C#
 ---
 
 
-The Background
+The Background...
 ==============
 
 I had an idea for an app but then again, who hasn't?  As a Mac and iPhone owner of several years my target platform was already decided. My app needs the ability to sync structured information between devices and desktop computers, including eventually Windwows, Android, etc. 
