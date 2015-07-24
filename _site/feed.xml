@@ -6,21 +6,52 @@
 </description>
     <link>http://yourdomain.com/</link>
     <atom:link href="http://yourdomain.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 15 Jul 2015 18:45:45 -0400</pubDate>
-    <lastBuildDate>Wed, 15 Jul 2015 18:45:45 -0400</lastBuildDate>
+    <pubDate>Fri, 24 Jul 2015 12:08:11 -0400</pubDate>
+    <lastBuildDate>Fri, 24 Jul 2015 12:08:11 -0400</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
     
       <item>
-        <title>Configuration</title>
-        <description>&lt;p&gt;This is the first of a multi-part post on software configuration.&lt;/p&gt;
+        <title>Introducing No Sql Server</title>
+        <description>
+&lt;hr /&gt;
+&lt;p&gt;layout: post
+title: Introducing NoSQLServer
+category: software&lt;/p&gt;
+
+&lt;p&gt;excerpt: NoSQL Power, using SQLServer or any RDBMS&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;introducing-nosqlserver&quot;&gt;Introducing NoSQLServer&lt;/h3&gt;
+
+&lt;p&gt;This is the first in a series of blog posts in which I’ll discuss the rationale for building applications using a NoSQL philosophy 
+utilizing a primarily “NoSQL” phiosophy, but implemented SQL Server.&lt;/p&gt;
+
+&lt;p&gt;My tentative approach to covering this topic unfolds something like this:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;NoSQL Philosophy&lt;/li&gt;
+  &lt;li&gt;Why NoSQL on SQL Server? (or any RDBMS?)&lt;/li&gt;
+  &lt;li&gt;Approach&lt;/li&gt;
+  &lt;li&gt;Trade-offs&lt;/li&gt;
+  &lt;li&gt;Advantages&lt;/li&gt;
+  &lt;li&gt;Feature list&lt;/li&gt;
+  &lt;li&gt;Code - AggregateType&lt;/li&gt;
+  &lt;li&gt;Code - AggregateBase&lt;/li&gt;
+  &lt;li&gt;Code - RepositoryBase&lt;/li&gt;
+  &lt;li&gt;Code - DBWriter&lt;/li&gt;
+  &lt;li&gt;Code - Cascading Update&lt;/li&gt;
+  &lt;li&gt;Code - An implementation&lt;/li&gt;
+  &lt;li&gt;Code - Another impelentation&lt;/li&gt;
+  &lt;li&gt;Code - NoSQLServer Client&lt;/li&gt;
+  &lt;li&gt;Summary&lt;/li&gt;
+&lt;/ul&gt;
 
 </description>
-        <pubDate>Wed, 15 Jul 2015 00:00:00 -0400</pubDate>
-        <link>http://yourdomain.com/software/2015/07/15/hello-world.html</link>
-        <guid isPermaLink="true">http://yourdomain.com/software/2015/07/15/hello-world.html</guid>
+        <pubDate>Fri, 24 Jul 2015 00:00:00 -0400</pubDate>
+        <link>http://yourdomain.com/2015/07/24/Introducing-No-SQL-Server.html</link>
+        <guid isPermaLink="true">http://yourdomain.com/2015/07/24/Introducing-No-SQL-Server.html</guid>
         
-        
-        <category>software</category>
         
       </item>
     
