@@ -1,11 +1,8 @@
-
 ---
 layout: post
 title: Introducing NoSQLServer
 category: software
-
 excerpt: NoSQL Power, using SQLServer or any RDBMS
-
 ---
 
 
