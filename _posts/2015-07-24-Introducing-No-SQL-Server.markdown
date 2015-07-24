@@ -29,7 +29,7 @@ My tentative approach to covering this series unfolds something like this:
 * Code - DBWriter
 * Code - Cascading Update
 * Code - An implementation
-* Code - Another impelentation
+* Code - Another implementation
 * Code - NoSQLServer Client
 * Summary
 

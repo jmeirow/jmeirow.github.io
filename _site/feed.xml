@@ -6,8 +6,8 @@
 </description>
     <link>http://yourdomain.com/</link>
     <atom:link href="http://yourdomain.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 24 Jul 2015 12:42:21 -0400</pubDate>
-    <lastBuildDate>Fri, 24 Jul 2015 12:42:21 -0400</lastBuildDate>
+    <pubDate>Fri, 24 Jul 2015 16:18:50 -0400</pubDate>
+    <lastBuildDate>Fri, 24 Jul 2015 16:18:50 -0400</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
     
       <item>
@@ -36,7 +36,7 @@ if I were to add a space here, or a hyphen there. (NoSQL-Server or No SQLServer?
   &lt;li&gt;Code - DBWriter&lt;/li&gt;
   &lt;li&gt;Code - Cascading Update&lt;/li&gt;
   &lt;li&gt;Code - An implementation&lt;/li&gt;
-  &lt;li&gt;Code - Another impelentation&lt;/li&gt;
+  &lt;li&gt;Code - Another implementation&lt;/li&gt;
   &lt;li&gt;Code - NoSQLServer Client&lt;/li&gt;
   &lt;li&gt;Summary&lt;/li&gt;
 &lt;/ul&gt;
