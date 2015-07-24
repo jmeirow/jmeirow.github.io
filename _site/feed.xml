@@ -6,8 +6,8 @@
 </description>
     <link>http://yourdomain.com/</link>
     <atom:link href="http://yourdomain.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 24 Jul 2015 12:14:31 -0400</pubDate>
-    <lastBuildDate>Fri, 24 Jul 2015 12:14:31 -0400</lastBuildDate>
+    <pubDate>Fri, 24 Jul 2015 12:39:18 -0400</pubDate>
+    <lastBuildDate>Fri, 24 Jul 2015 12:39:18 -0400</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
     
       <item>
@@ -15,9 +15,13 @@
         <description>&lt;h3 id=&quot;introducing-nosqlserver&quot;&gt;Introducing NoSQLServer&lt;/h3&gt;
 
 &lt;p&gt;This is the first in a series of blog posts in which I’ll discuss the rationale for building applications using a NoSQL philosophy 
-utilizing a primarily “NoSQL” phiosophy, but implemented SQL Server.&lt;/p&gt;
+but implemented on SQL Server.  &lt;/p&gt;
 
-&lt;p&gt;My tentative approach to covering this topic unfolds something like this:&lt;/p&gt;
+&lt;p&gt;I’ve named this little project “NoSQLServer”. 
+I like the &lt;a href=&quot;http://users.ohiohills.com/gordon/liar.html&quot;&gt;inconspicuously ambiguous&lt;/a&gt; name because it will appeal to larger audience than
+if I were to add a space here, or a hyphen there. (NoSQL-Server or No SQLServer?)&lt;/p&gt;
+
+&lt;p&gt;My tentative approach to covering this series unfolds something like this:&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;NoSQL Philosophy&lt;/li&gt;
@@ -36,6 +40,8 @@ utilizing a primarily “NoSQL” phiosophy, but implemented SQL Server.&lt;/p&g
   &lt;li&gt;Code - NoSQLServer Client&lt;/li&gt;
   &lt;li&gt;Summary&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;h4 id=&quot;next-up--nosql-philosophy&quot;&gt;Next up:  NoSQL Philosophy&lt;/h4&gt;
 
 </description>
         <pubDate>Fri, 24 Jul 2015 00:00:00 -0400</pubDate>

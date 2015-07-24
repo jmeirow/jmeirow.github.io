@@ -9,9 +9,13 @@ excerpt: NoSQL Power, using SQLServer or any RDBMS
 ### Introducing NoSQLServer
 
 This is the first in a series of blog posts in which I'll discuss the rationale for building applications using a NoSQL philosophy 
-utilizing a primarily "NoSQL" phiosophy, but implemented SQL Server.
+but implemented on SQL Server.  
 
-My tentative approach to covering this topic unfolds something like this:
+I've named this little project "NoSQLServer". 
+I like the [inconspicuously ambiguous](http://users.ohiohills.com/gordon/liar.html) name because it will appeal to larger audience than
+if I were to add a space here, or a hyphen there. (NoSQL-Server or No SQLServer?)
+
+My tentative approach to covering this series unfolds something like this:
 
 * NoSQL Philosophy
 * Why NoSQL on SQL Server? (or any RDBMS?)
@@ -28,4 +32,9 @@ My tentative approach to covering this topic unfolds something like this:
 * Code - Another impelentation
 * Code - NoSQLServer Client
 * Summary
+
+
+
+#### Next up:  NoSQL Philosophy
+
 
